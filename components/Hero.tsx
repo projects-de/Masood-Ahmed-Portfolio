@@ -11,7 +11,7 @@ export function Hero() {
         <div className="max-w-2xl animate-fade-up">
           <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-border-soft bg-surface/60 px-3 py-1 font-mono text-xs uppercase tracking-[0.2em] text-accent">
             <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-slow" />
-            Open to Senior Data Engineering Opportunities
+            Open for Data Engineering/Analytics Engagements
           </p>
           <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             {profile.name}

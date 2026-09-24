@@ -1,4 +1,5 @@
 import { Section, SectionHeading } from "./Section";
+import { Metrics } from "./Metrics";
 import { about, education, profile } from "@/lib/data";
 
 export function About() {
@@ -35,6 +36,8 @@ export function About() {
           </div>
         </div>
       </div>
+
+      <Metrics />
     </Section>
   );
 }

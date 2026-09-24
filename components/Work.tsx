@@ -123,7 +123,7 @@ export function Work() {
     <Section id="work">
       <SectionHeading
         eyebrow="Experience & Projects"
-        title="Where I've built, and what I shipped"
+        title="What I've built, and shipped"
         description="A decade-plus across healthcare systems and SaaS — each role paired with the platform I built and the measurable outcome it delivered."
       />
       <div className="flex flex-col gap-10">

@@ -46,17 +46,15 @@ function AnimatedValue({ value }: { value: string }) {
 
 export function Metrics() {
   return (
-    <div className="border-y border-border-soft">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 py-14 sm:grid-cols-4">
-        {metrics.map((m) => (
-          <div key={m.label} className="text-center sm:text-left">
-            <p className="font-mono text-3xl font-semibold text-gradient sm:text-4xl">
-              <AnimatedValue value={m.value} />
-            </p>
-            <p className="mt-2 text-sm text-foreground-dim">{m.label}</p>
-          </div>
-        ))}
-      </div>
+    <div className="mt-12 grid grid-cols-2 gap-8 border-t border-border-soft pt-10 sm:grid-cols-4">
+      {metrics.map((m) => (
+        <div key={m.label} className="text-center sm:text-left">
+          <p className="font-mono text-3xl font-semibold text-gradient sm:text-4xl">
+            <AnimatedValue value={m.value} />
+          </p>
+          <p className="mt-2 text-sm text-foreground-dim">{m.label}</p>
+        </div>
+      ))}
     </div>
   );
 }

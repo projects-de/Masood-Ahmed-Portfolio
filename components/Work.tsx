@@ -53,6 +53,28 @@ function MetricBars({ impact }: { impact: RoleEntry["impact"] }) {
   );
 }
 
+function FocusAreas({ areas }: { areas: RoleEntry["focusAreas"] }) {
+  if (!areas || areas.length === 0) return null;
+
+  return (
+    <div className="mt-5 border-t border-border-soft pt-5">
+      <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground-faint">
+        Focus Areas
+      </p>
+      <div className="flex flex-wrap gap-2">
+        {areas.map((a) => (
+          <span
+            key={a}
+            className="rounded-full border border-accent/25 bg-accent/5 px-3 py-1.5 text-xs font-medium text-accent-strong"
+          >
+            {a}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function RoleCard({ entry, defaultOpen, isLast }: { entry: RoleEntry; defaultOpen?: boolean; isLast?: boolean }) {
   const [expanded, setExpanded] = useState(Boolean(defaultOpen));
 
@@ -112,7 +134,11 @@ function RoleCard({ entry, defaultOpen, isLast }: { entry: RoleEntry; defaultOpe
           </div>
         </div>
 
-        <MetricBars impact={entry.impact} />
+        {entry.impact ? (
+          <MetricBars impact={entry.impact} />
+        ) : (
+          <FocusAreas areas={entry.focusAreas} />
+        )}
       </div>
     </div>
   );

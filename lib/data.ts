@@ -43,6 +43,7 @@ export type RoleEntry = {
     stack: string[];
   };
   impact?: ImpactMetric[];
+  focusAreas?: string[];
 };
 
 export const roles: RoleEntry[] = [
@@ -94,6 +95,7 @@ export const roles: RoleEntry[] = [
         "Designed Azure ingestion pipelines (ADF, Azure SQL, ADLS) and HL7/API integration specs for medical devices and clinical apps, backed by FDA and ISO 14971 risk assessments and NIST SP 800-53/800-66 controls to support post-acquisition cloud migration.",
       stack: ["Azure Data Factory", "ADLS", "HL7", "NIST 800-53", "ISO 14971"],
     },
+    focusAreas: ["IoMT Integration", "FDA & ISO 14971 Risk Assessments", "NIST 800-53/800-66 Controls", "Cloud Migration"],
   },
   {
     role: "Data Engineer",
@@ -138,6 +140,7 @@ export const roles: RoleEntry[] = [
         "Delivered SSIS and SQL-based ETL pipelines and a data warehouse integrating transactional, billing, and revenue data from Oracle and SQL Server, powering financial reporting and SaaS analytics with Docker-based CI/CD for reliable releases.",
       stack: ["SSIS", "SQL Server", "Oracle", "Docker", "CI/CD"],
     },
+    focusAreas: ["ETL/ELT Pipeline Design", "SaaS Analytics", "Real-Time IoT Streaming", "Enterprise Data Warehousing"],
   },
 ];
 

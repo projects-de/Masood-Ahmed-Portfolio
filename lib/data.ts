@@ -18,6 +18,22 @@ export const metrics = [
   { value: "16", label: "Engineers Led (Onshore & Offshore)" },
 ];
 
+export type ImpactMetric = {
+  label: string;
+  context: string;
+  value: number;
+  display: string;
+};
+
+export const impactMetrics: ImpactMetric[] = [
+  { label: "Audit Compliance", context: "Baylor Scott & White — HIPAA governance", value: 100, display: "100%" },
+  { label: "Data Quality Improvement", context: "Crescent Regional — 87% → 98%", value: 98, display: "98%" },
+  { label: "Manual QA Automated", context: "Crescent Regional — streaming pipelines", value: 60, display: "60%" },
+  { label: "Manual Validation Automated", context: "Baylor Scott & White — lakehouse platform", value: 50, display: "50%" },
+  { label: "Faster Data Processing", context: "Baylor Scott & White — Databricks tuning", value: 40, display: "40%" },
+  { label: "Fewer Production Incidents", context: "Crescent Regional — CI/CD automation", value: 25, display: "25%" },
+];
+
 export const about = {
   paragraphs: [
     "I'm a senior lead data engineer with 12+ years of experience building secure data platforms for hospitals, health systems, and SaaS companies — designing lakehouse and warehouse solutions on Databricks, Snowflake, and Azure, from Kafka streaming to classic SSIS ETL.",

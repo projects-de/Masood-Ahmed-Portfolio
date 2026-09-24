@@ -90,9 +90,54 @@ body {
   animation: pulse-slow 3s ease-in-out infinite;
 }
 
+@keyframes pipeline-travel {
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 8px);
+    opacity: 0;
+  }
+}
+
+.pipeline-dot {
+  animation-name: pipeline-travel;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  box-shadow: 0 0 8px 1px var(--accent);
+}
+
+@keyframes pipeline-node-pulse {
+  0%,
+  88%,
+  100% {
+    box-shadow: 0 0 0 0 var(--accent-dim);
+    border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+  6% {
+    box-shadow: 0 0 0 6px var(--accent-dim);
+    border-color: var(--accent);
+  }
+}
+
+.pipeline-node {
+  animation-name: pipeline-node-pulse;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
-  .animate-pulse-slow {
+  .animate-pulse-slow,
+  .pipeline-dot,
+  .pipeline-node {
     animation: none;
   }
 }

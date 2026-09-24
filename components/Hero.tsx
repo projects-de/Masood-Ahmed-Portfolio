@@ -1,4 +1,5 @@
 import { profile } from "@/lib/data";
+import { PipelineFlow } from "./PipelineFlow";
 
 export function Hero() {
   return (
@@ -47,6 +48,8 @@ export function Hero() {
             </a>
           </div>
         </div>
+
+        <PipelineFlow />
       </div>
     </section>
   );

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Section, SectionHeading } from "./Section";
+import { Reveal } from "./Reveal";
 import { experience, type ExperienceEntry } from "@/lib/data";
 
 function ExperienceCard({
@@ -69,12 +70,13 @@ export function Experience() {
       />
       <div className="flex flex-col gap-10">
         {experience.map((entry, i) => (
-          <ExperienceCard
-            key={entry.company}
-            entry={entry}
-            defaultOpen={i === 0}
-            isLast={i === experience.length - 1}
-          />
+          <Reveal key={entry.company} delay={Math.min(i * 100, 300)}>
+            <ExperienceCard
+              entry={entry}
+              defaultOpen={i === 0}
+              isLast={i === experience.length - 1}
+            />
+          </Reveal>
         ))}
       </div>
     </Section>

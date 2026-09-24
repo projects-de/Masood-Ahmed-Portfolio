@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Reveal } from "./Reveal";
 
 export function Section({
   id,
@@ -11,7 +12,9 @@ export function Section({
 }) {
   return (
     <section id={id} className={`relative scroll-mt-24 py-20 sm:py-28 ${className}`}>
-      <div className="mx-auto max-w-6xl px-6">{children}</div>
+      <div className="mx-auto max-w-6xl px-6">
+        <Reveal>{children}</Reveal>
+      </div>
     </section>
   );
 }

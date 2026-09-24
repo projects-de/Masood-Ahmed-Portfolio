@@ -28,13 +28,13 @@ export function Hero() {
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
-              href="#projects"
+              href="#work"
               className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-on-accent transition-transform hover:scale-[1.03] hover:bg-accent-strong"
             >
               View Work
             </a>
             <a
-              href="#contact"
+              href={`mailto:${profile.email}`}
               className="rounded-full border border-accent px-6 py-3 text-sm font-semibold text-accent transition-colors hover:bg-accent hover:text-on-accent"
             >
               Get in Touch

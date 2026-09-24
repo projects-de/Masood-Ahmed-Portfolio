@@ -18,22 +18,6 @@ export const metrics = [
   { value: "16", label: "Engineers Led (Onshore & Offshore)" },
 ];
 
-export type ImpactMetric = {
-  label: string;
-  context: string;
-  value: number;
-  display: string;
-};
-
-export const impactMetrics: ImpactMetric[] = [
-  { label: "Audit Compliance", context: "Baylor Scott & White — HIPAA governance", value: 100, display: "100%" },
-  { label: "Data Quality Improvement", context: "Crescent Regional — 87% → 98%", value: 98, display: "98%" },
-  { label: "Manual QA Automated", context: "Crescent Regional — streaming pipelines", value: 60, display: "60%" },
-  { label: "Manual Validation Automated", context: "Baylor Scott & White — lakehouse platform", value: 50, display: "50%" },
-  { label: "Faster Data Processing", context: "Baylor Scott & White — Databricks tuning", value: 40, display: "40%" },
-  { label: "Fewer Production Incidents", context: "Crescent Regional — CI/CD automation", value: 25, display: "25%" },
-];
-
 export const about = {
   paragraphs: [
     "I'm a senior lead data engineer with 12+ years of experience building secure data platforms for hospitals, health systems, and SaaS companies — designing lakehouse and warehouse solutions on Databricks, Snowflake, and Azure, from Kafka streaming to classic SSIS ETL.",
@@ -41,15 +25,27 @@ export const about = {
   ],
 };
 
-export type ExperienceEntry = {
+export type ImpactMetric = {
+  label: string;
+  value: number;
+  display: string;
+};
+
+export type RoleEntry = {
   role: string;
   company: string;
   period: string;
   bullets: string[];
   extraBullets?: string[];
+  project: {
+    title: string;
+    summary: string;
+    stack: string[];
+  };
+  impact?: ImpactMetric[];
 };
 
-export const experience: ExperienceEntry[] = [
+export const roles: RoleEntry[] = [
   {
     role: "Senior Lead Data Engineer",
     company: "Baylor Scott & White",
@@ -66,6 +62,17 @@ export const experience: ExperienceEntry[] = [
       "Integrated Azure OpenAI Service and Snowflake Cortex for AI-driven data quality and summarization workflows.",
       "Implemented HIPAA-aligned governance with Key Vault, Purview, and Monitor — 100% audit compliance, zero findings; mentored a team of 3+ engineers.",
     ],
+    project: {
+      title: "Clinical Lakehouse on Databricks and Snowflake",
+      summary:
+        "Built a governed Databricks + Snowflake lakehouse for EHR, claims, and IoMT device data using Delta Lake medallion layers, Unity Catalog, and Snowpipe — speeding up processing by 40%, automating 50% of manual validation, and passing audits with zero findings.",
+      stack: ["Databricks", "Delta Lake", "Unity Catalog", "Snowflake", "Snowpipe"],
+    },
+    impact: [
+      { label: "Audit Compliance", value: 100, display: "100%" },
+      { label: "Manual Validation Automated", value: 50, display: "50%" },
+      { label: "Faster Data Processing", value: 40, display: "40%" },
+    ],
   },
   {
     role: "Data Consultant",
@@ -81,6 +88,12 @@ export const experience: ExperienceEntry[] = [
       "Enhanced interoperability via secure API, HL7, and data exchange validations.",
       "Supported post-acquisition data integration and secure cloud migration initiatives.",
     ],
+    project: {
+      title: "IoMT Data Integration & Security Compliance",
+      summary:
+        "Designed Azure ingestion pipelines (ADF, Azure SQL, ADLS) and HL7/API integration specs for medical devices and clinical apps, backed by FDA and ISO 14971 risk assessments and NIST SP 800-53/800-66 controls to support post-acquisition cloud migration.",
+      stack: ["Azure Data Factory", "ADLS", "HL7", "NIST 800-53", "ISO 14971"],
+    },
   },
   {
     role: "Data Engineer",
@@ -98,6 +111,17 @@ export const experience: ExperienceEntry[] = [
       "Established governance frameworks — encryption, RBAC, audit trails — protecting PHI/PII across clinical and administrative systems.",
       "Delivered executive dashboards in Power BI and Tableau on patient outcomes, platform health, and compliance posture.",
     ],
+    project: {
+      title: "Enterprise Clinical & Revenue Cycle Data Platform",
+      summary:
+        "Built Snowflake + Azure Databricks pipelines for clinical, claims, billing, and general-ledger data across 50+ urgent care clinics and acquired hospitals, raising data quality from 87% to 98% while leading a 16-member onshore/offshore team.",
+      stack: ["Snowflake", "Databricks", "dbt", "Power BI", "Team Leadership"],
+    },
+    impact: [
+      { label: "Data Quality Improvement (87% → 98%)", value: 98, display: "98%" },
+      { label: "Manual QA Automated", value: 60, display: "60%" },
+      { label: "Fewer Production Incidents", value: 25, display: "25%" },
+    ],
   },
   {
     role: "Junior Data Engineer",
@@ -108,44 +132,12 @@ export const experience: ExperienceEntry[] = [
       "Developed SSIS and SQL stored-procedure workflows to extract, cleanse, and load data from Oracle, SQL Server, and flat files with incremental loads and error handling.",
       "Built streaming ingestion with Kafka and Spark for IoT and application event data, enabling real-time operational dashboards.",
     ],
-  },
-];
-
-export type Project = {
-  title: string;
-  org: string;
-  summary: string;
-  stack: string[];
-};
-
-export const projects: Project[] = [
-  {
-    title: "Clinical Lakehouse on Databricks and Snowflake",
-    org: "Baylor Scott & White",
-    summary:
-      "Built a governed Databricks + Snowflake lakehouse for EHR, claims, and IoMT device data using Delta Lake medallion layers, Unity Catalog, and Snowpipe — speeding up processing by 40%, automating 50% of manual validation, and passing audits with zero findings.",
-    stack: ["Databricks", "Delta Lake", "Unity Catalog", "Snowflake", "Snowpipe"],
-  },
-  {
-    title: "IoMT Data Integration & Security Compliance",
-    org: "Hill Regional Hospital",
-    summary:
-      "Designed Azure ingestion pipelines (ADF, Azure SQL, ADLS) and HL7/API integration specs for medical devices and clinical apps, backed by FDA and ISO 14971 risk assessments and NIST SP 800-53/800-66 controls to support post-acquisition cloud migration.",
-    stack: ["Azure Data Factory", "ADLS", "HL7", "NIST 800-53", "ISO 14971"],
-  },
-  {
-    title: "Enterprise Clinical & Revenue Cycle Data Platform",
-    org: "Crescent Regional Hospital",
-    summary:
-      "Built Snowflake + Azure Databricks pipelines for clinical, claims, billing, and general-ledger data across 50+ urgent care clinics and acquired hospitals, raising data quality from 87% to 98% while leading a 16-member onshore/offshore team.",
-    stack: ["Snowflake", "Databricks", "dbt", "Power BI", "Team Leadership"],
-  },
-  {
-    title: "Financial & SaaS Analytics Data Warehouse",
-    org: "ASP Cares",
-    summary:
-      "Delivered SSIS and SQL-based ETL pipelines and a data warehouse integrating transactional, billing, and revenue data from Oracle and SQL Server, powering financial reporting and SaaS analytics with Docker-based CI/CD for reliable releases.",
-    stack: ["SSIS", "SQL Server", "Oracle", "Docker", "CI/CD"],
+    project: {
+      title: "Financial & SaaS Analytics Data Warehouse",
+      summary:
+        "Delivered SSIS and SQL-based ETL pipelines and a data warehouse integrating transactional, billing, and revenue data from Oracle and SQL Server, powering financial reporting and SaaS analytics with Docker-based CI/CD for reliable releases.",
+      stack: ["SSIS", "SQL Server", "Oracle", "Docker", "CI/CD"],
+    },
   },
 ];
 

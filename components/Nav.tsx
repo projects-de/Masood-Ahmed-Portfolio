@@ -6,10 +6,8 @@ import { profile } from "@/lib/data";
 const links = [
   { href: "#top", label: "Home" },
   { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
+  { href: "#work", label: "Work" },
   { href: "#skills", label: "Skills" },
-  { href: "#contact", label: "Contact" },
 ];
 
 export function Nav() {

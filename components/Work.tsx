@@ -39,7 +39,7 @@ function MetricBars({ impact }: { impact: RoleEntry["impact"] }) {
           </div>
           <div className="h-1.5 w-full overflow-hidden rounded-full bg-accent/10">
             <div
-              className="h-full rounded-full bg-accent transition-[width] ease-out"
+              className="h-full rounded-full bg-gradient-to-r from-accent to-accent-2 transition-[width] ease-out"
               style={{
                 width: active ? `${m.value}%` : "0%",
                 transitionDuration: "1000ms",

@@ -29,7 +29,7 @@ export function Hero() {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href="#work"
-              className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-on-accent transition-transform hover:scale-[1.03] hover:bg-accent-strong"
+              className="rounded-full bg-gradient-to-r from-accent to-accent-2 px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.03] hover:brightness-110"
             >
               View Work
             </a>

@@ -8,22 +8,22 @@ type NodeDef = {
 };
 
 const W = 860;
-const H = 520;
+const H = 600;
 
 const sources: NodeDef[] = [
-  { id: "s1", label: "Databases", sub: "SQL · Oracle", x: 100, y: 40, icon: "database" },
-  { id: "s2", label: "Files & APIs", sub: "REST · Flat Files", x: 100, y: 165, icon: "files" },
-  { id: "s3", label: "Streaming Events", sub: "Kafka", x: 100, y: 290, icon: "stream" },
-  { id: "s4", label: "SaaS Apps", sub: "Cloud Platforms", x: 100, y: 415, icon: "saas" },
+  { id: "s1", label: "Databases", sub: "SQL · Oracle", x: 100, y: 50, icon: "database" },
+  { id: "s2", label: "Files & APIs", sub: "REST · Flat Files", x: 100, y: 195, icon: "files" },
+  { id: "s3", label: "Streaming Events", sub: "Kafka", x: 100, y: 340, icon: "stream" },
+  { id: "s4", label: "SaaS Apps", sub: "Cloud Platforms", x: 100, y: 485, icon: "saas" },
 ];
 
-const hub: NodeDef = { id: "hub", label: "Ingestion / ETL", sub: "Spark · ADF", x: 330, y: 227, icon: "ingest" };
-const core: NodeDef = { id: "core", label: "Lakehouse", sub: "Delta Lake · Snowflake", x: 530, y: 227, icon: "lakehouse" };
+const hub: NodeDef = { id: "hub", label: "Ingestion / ETL", sub: "Spark · ADF", x: 330, y: 268, icon: "ingest" };
+const core: NodeDef = { id: "core", label: "Lakehouse", sub: "Delta Lake · Snowflake", x: 530, y: 268, icon: "lakehouse" };
 
 const destinations: NodeDef[] = [
-  { id: "d1", label: "BI & Analytics", sub: "Power BI · Tableau", x: 750, y: 102, icon: "bi" },
-  { id: "d2", label: "AI / ML", sub: "Azure OpenAI", x: 750, y: 227, icon: "ai" },
-  { id: "d3", label: "Governance", sub: "RBAC · Compliance", x: 750, y: 352, icon: "shield" },
+  { id: "d1", label: "BI & Analytics", sub: "Power BI · Tableau", x: 750, y: 123, icon: "bi" },
+  { id: "d2", label: "AI / ML", sub: "Azure OpenAI", x: 750, y: 268, icon: "ai" },
+  { id: "d3", label: "Governance", sub: "RBAC · Compliance", x: 750, y: 413, icon: "shield" },
 ];
 
 function curve(x1: number, y1: number, x2: number, y2: number) {
@@ -75,17 +75,17 @@ const icons: Record<NodeDef["icon"], React.ReactNode> = {
 function NodeBadge({ node }: { node: NodeDef }) {
   return (
     <div
-      className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5"
+      className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-2"
       style={{ left: `${(node.x / W) * 100}%`, top: `${(node.y / H) * 100}%` }}
     >
-      <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-accent/40 bg-surface text-accent shadow-sm">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+      <div className="flex h-12 w-12 min-[1400px]:h-14 min-[1400px]:w-14 2xl:h-16 2xl:w-16 items-center justify-center rounded-2xl border border-accent/40 bg-surface text-accent shadow-sm">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 2xl:h-7 2xl:w-7">
           {icons[node.icon]}
         </svg>
       </div>
       <div className="text-center leading-tight">
-        <p className="whitespace-nowrap text-[11px] font-semibold text-foreground">{node.label}</p>
-        <p className="whitespace-nowrap font-mono text-[9px] text-foreground-faint">{node.sub}</p>
+        <p className="whitespace-nowrap text-xs min-[1400px]:text-[13px] 2xl:text-sm font-semibold text-foreground">{node.label}</p>
+        <p className="whitespace-nowrap font-mono text-[10px] 2xl:text-[11px] text-foreground-faint">{node.sub}</p>
       </div>
     </div>
   );
@@ -94,8 +94,8 @@ function NodeBadge({ node }: { node: NodeDef }) {
 function FlowPath({ d, duration, delay }: { d: string; duration: number; delay: number }) {
   return (
     <>
-      <path d={d} fill="none" stroke="var(--border)" strokeWidth="1.5" />
-      <circle r="3.5" fill="var(--accent)">
+      <path d={d} fill="none" stroke="var(--border)" strokeWidth="2" />
+      <circle r="5" fill="var(--accent)">
         <animateMotion dur={`${duration}s`} begin={`${delay}s`} repeatCount="indefinite" path={d} />
       </circle>
     </>
@@ -103,16 +103,16 @@ function FlowPath({ d, duration, delay }: { d: string; duration: number; delay: 
 }
 
 export function DataFlowDiagram() {
-  const sourcePaths = sources.map((s) => curve(s.x + 22, s.y, hub.x - 22, hub.y));
-  const hubToCore = `M${hub.x + 22},${hub.y} L${core.x - 22},${core.y}`;
-  const destPaths = destinations.map((d) => curve(core.x + 22, core.y, d.x - 22, d.y));
+  const sourcePaths = sources.map((s) => curve(s.x + 32, s.y, hub.x - 32, hub.y));
+  const hubToCore = `M${hub.x + 32},${hub.y} L${core.x - 32},${core.y}`;
+  const destPaths = destinations.map((d) => curve(core.x + 32, core.y, d.x - 32, d.y));
 
   return (
     <div
-      className="relative min-w-0 animate-fade-up overflow-x-auto px-3 py-8 [animation-delay:250ms]"
+      className="relative min-w-0 animate-fade-up overflow-x-auto px-3 py-8 xl:overflow-visible [animation-delay:250ms]"
       aria-hidden
     >
-      <div className="relative" style={{ minWidth: 560, aspectRatio: `${W} / ${H}` }}>
+      <div className="relative min-w-[640px] xl:min-w-0" style={{ aspectRatio: `${W} / ${H}` }}>
         <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid meet">
           {sourcePaths.map((d, i) => (
             <FlowPath key={sources[i].id} d={d} duration={2.6} delay={i * 0.4} />

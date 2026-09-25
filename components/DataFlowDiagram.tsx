@@ -8,22 +8,22 @@ type NodeDef = {
 };
 
 const W = 860;
-const H = 450;
+const H = 520;
 
 const sources: NodeDef[] = [
   { id: "s1", label: "Databases", sub: "SQL · Oracle", x: 100, y: 40, icon: "database" },
-  { id: "s2", label: "Files & APIs", sub: "REST · Flat Files", x: 100, y: 150, icon: "files" },
-  { id: "s3", label: "Streaming Events", sub: "Kafka", x: 100, y: 260, icon: "stream" },
-  { id: "s4", label: "SaaS Apps", sub: "Cloud Platforms", x: 100, y: 370, icon: "saas" },
+  { id: "s2", label: "Files & APIs", sub: "REST · Flat Files", x: 100, y: 165, icon: "files" },
+  { id: "s3", label: "Streaming Events", sub: "Kafka", x: 100, y: 290, icon: "stream" },
+  { id: "s4", label: "SaaS Apps", sub: "Cloud Platforms", x: 100, y: 415, icon: "saas" },
 ];
 
-const hub: NodeDef = { id: "hub", label: "Ingestion / ETL", sub: "Spark · ADF", x: 330, y: 205, icon: "ingest" };
-const core: NodeDef = { id: "core", label: "Lakehouse", sub: "Delta Lake · Snowflake", x: 530, y: 205, icon: "lakehouse" };
+const hub: NodeDef = { id: "hub", label: "Ingestion / ETL", sub: "Spark · ADF", x: 330, y: 227, icon: "ingest" };
+const core: NodeDef = { id: "core", label: "Lakehouse", sub: "Delta Lake · Snowflake", x: 530, y: 227, icon: "lakehouse" };
 
 const destinations: NodeDef[] = [
-  { id: "d1", label: "BI & Analytics", sub: "Power BI · Tableau", x: 780, y: 95, icon: "bi" },
-  { id: "d2", label: "AI / ML", sub: "Azure OpenAI", x: 780, y: 205, icon: "ai" },
-  { id: "d3", label: "Governance", sub: "RBAC · Compliance", x: 780, y: 315, icon: "shield" },
+  { id: "d1", label: "BI & Analytics", sub: "Power BI · Tableau", x: 750, y: 102, icon: "bi" },
+  { id: "d2", label: "AI / ML", sub: "Azure OpenAI", x: 750, y: 227, icon: "ai" },
+  { id: "d3", label: "Governance", sub: "RBAC · Compliance", x: 750, y: 352, icon: "shield" },
 ];
 
 function curve(x1: number, y1: number, x2: number, y2: number) {
@@ -109,13 +109,10 @@ export function DataFlowDiagram() {
 
   return (
     <div
-      className="relative mx-auto mt-14 max-w-3xl animate-fade-up overflow-x-auto px-2 [animation-delay:250ms]"
+      className="relative min-w-0 animate-fade-up overflow-x-auto px-3 py-8 [animation-delay:250ms]"
       aria-hidden
     >
-      <p className="mb-4 text-center font-mono text-[11px] uppercase tracking-[0.2em] text-foreground-faint">
-        How data moves through the platforms I build
-      </p>
-      <div className="relative" style={{ minWidth: 620, aspectRatio: `${W} / ${H}` }}>
+      <div className="relative" style={{ minWidth: 560, aspectRatio: `${W} / ${H}` }}>
         <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid meet">
           {sourcePaths.map((d, i) => (
             <FlowPath key={sources[i].id} d={d} duration={2.6} delay={i * 0.4} />
